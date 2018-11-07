@@ -3,7 +3,7 @@ module.exports = {
 
   siteTitle: 'Blog', // Navigation and Site Title
   siteTitleAlt: 'Blog - SQL³', // Alternative Site title for SEO
-  siteUrl: 'https://NA.com', // Domain of your site. No trailing slash!
+  siteUrl: 'https://sql-cubed.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteBanner: '', // Your image for og:image tag. You can find it in the /static folder
   favicon: '', // Your image for favicons. You can find it in the /src folder

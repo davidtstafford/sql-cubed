@@ -84,7 +84,7 @@ const Layout = ({ children }) => (
           {children}
           <Footer>
             &copy; 2018 by David Stafford. All rights reserved. <br />
-            <a href="https://github.com/">GitHub Repository</a> <br />
+            <a href="https://github.com/davidtstafford/sql-cubed">GitHub Repository</a> <br />
             <span>Last build: {data.site.buildTime}</span>
           </Footer>
         </React.Fragment>
