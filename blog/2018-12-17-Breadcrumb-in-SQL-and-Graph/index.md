@@ -263,7 +263,7 @@ The above query does the following:
 
 > Side note
 
-While i was writing this, a useful query that I was using was to count to amount of reports that globally roll up the each person.
+While i was writing this, I made use of a useful query to count the amount of reports that globally roll up to each person.
 I achieved this in cypher by running
 
 ```sql
