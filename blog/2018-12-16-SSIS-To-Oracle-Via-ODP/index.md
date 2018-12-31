@@ -7,6 +7,8 @@ category: "SSIS"
 
 > SSIS - Oracle Destination via ODP.Net (Custom Destination Component)
 
+[![GitHub](./GitHub.png)](https://github.com/davidtstafford/SSIS2008R2-Custom-Oracle-Destination)
+
 SSIS 2008 R2 Solution.
 
 I have created this custom destination component to allow ssis to write directly to an oracle table via the ODP.NET driver. This avoids the poor performance of using the ADO.NET Destination component with odp.net, which is incredibly slow.
@@ -26,5 +28,4 @@ Variables:
 
 I created this code back in 2012 when SSIS 2008 R2 was the latest version.  I do not keep this code up to date, but it could be useful refernce.
 
-
-[GitHub link](https://github.com/davidtstafford/SSIS2008R2-Custom-Oracle-Destination)
+[GitHub Link](https://github.com/davidtstafford/SSIS2008R2-Custom-Oracle-Destination)
