@@ -8,7 +8,7 @@ category: "SQL Server"
 
 [![GitHub](./GitHub.png)](https://github.com/davidtstafford/DailyAutoPartitioning)
 
-I have worked on the number of batch systems that have required partitioning for various reasons.  I won't go into all of the reasons of why and when you should chose partitioing, as that would lead into its own blog post, but there are occassions when it is nice to be able to isolate batch pieces of work and just slot the data in when it is ready (or quickly remove it).  
+I have worked on the number of batch systems that have required partitioning for various reasons.  I won't go into all of the reasons of why and when you should chose partitioning, as that would lead into its own blog post, but there are occassions when it is nice to be able to isolate batch pieces of work and just slot the data in when it is ready (or quickly remove it).  
 
 So, in the following walkthrough, I will go through:
 - Creating a simple partitioned table
@@ -32,7 +32,7 @@ BEGIN TRY DROP TABLE dbo.MainTable END TRY BEGIN CATCH END CATCH
 GO
 BEGIN TRY DROP VIEW MetaData.vw_PartitionDetails END TRY BEGIN CATCH END CATCH 
 GO
-BEGIN TRY DROP PROC dbo.sp_PrepareMainTablePartitiions END TRY BEGIN CATCH END CATCH 
+BEGIN TRY DROP PROC dbo.sp_PrepareMainTablePartitions END TRY BEGIN CATCH END CATCH 
 GO
 BEGIN TRY DROP PROC dbo.sp_LoadMainTable END TRY BEGIN CATCH END CATCH 
 GO
@@ -61,7 +61,7 @@ GO
 CREATE SCHEMA [MetaData]
 GO
 ```
-> Not really essential, I'm just as bit OCD
+> Not really essential, I'm just a bit OCD.
 
 #### Step 3 .. Creating the Partitions
 
@@ -88,7 +88,7 @@ Creating 3 tables:
     - And importantly, uses the partition schema "psRunDates". Based on the RunDate column
 - Landing Table (Staging.MainTable__SwitchIN)
     - Identical setup to the Main Table other than living in the Staging schema
-- Purge Table (taging.MainTable__SwitchOUT)
+- Purge Table (Staging.MainTable__SwitchOUT)
     - Not indexed
     - Clustered index also contains the RunDate column as this will make the table appear identical to the partitioned table
 
@@ -134,7 +134,7 @@ CREATE NONCLUSTERED INDEX NCIX__MainTable__SwitchOUT_RunDate
 GO
 ```
 
-> Note - The loading table is partitioned as well.  Technically it doesn't have to be. If not though, you would need to do some check constaints magic to makes the tables appear identical for partion switching.
+> Note - The loading table is partitioned as well.  Technically it doesn't have to be. If not though, you would need to do some check constaints magic to makes the tables appear identical for partition switching.
 
 #### Step 5 .. Creating a view to display partition information
 
@@ -181,7 +181,7 @@ GO
 The scripts below will create 2 stored procedures. One to prepare new partitions and purge data if that partition already exists. The other to migrate the data from the landing area into the main table.
 
 ```sql
-CREATE PROCEDURE dbo.sp_PrepareMainTablePartitiions
+CREATE PROCEDURE dbo.sp_PrepareMainTablePartitions
 (
       @PartitionDate DATE
     , @OverwriteData BIT = 1 -- 1 = Get rid of previous data.. 0 = Thrown error if previous data found
@@ -245,7 +245,7 @@ BEGIN
 
     IF EXISTS ( SELECT 1 FROM dbo.MainTable WHERE RunDate = @PartitionDate)
     BEGIN
-        SET @ErrorMessage = 'Data has already been loaded for the date.  Pplease purge it first';
+        SET @ErrorMessage = 'Data has already been loaded for the date.  Please purge it first';
         RAISERROR(@ErrorMessage,16,1);
         RETURN;
     END
@@ -257,7 +257,7 @@ BEGIN
 
     IF @PartitionNumber IS NULL
     BEGIN
-        SET @ErrorMessage = 'Partition has not been created.  Run the proc "dbo.sp_PrepareMainTablePartitiions" first';
+        SET @ErrorMessage = 'Partition has not been created.  Run the proc "dbo.sp_PrepareMainTablePartitions" first';
         RAISERROR(@ErrorMessage,16,1);
         RETURN;
     END   
@@ -269,7 +269,7 @@ END
 GO
 ```
 
-> By default **dbo.sp_PrepareMainTablePartitiions** will purge data is the partition already exists.  But, setting **@OverwriteData=0** will stop this.  It will throw an error if it discovers an existing partition.
+> By default **dbo.sp_PrepareMainTablePartitions** will purge data is the partition already exists.  But, setting **@OverwriteData=0** will stop this.  It will throw an error if it discovers an existing partition.
 
 
 #### Step 7 .. Testing it all out
@@ -292,11 +292,11 @@ So we are now in a place were we can do a mock batch load.
 ##### 7.2
 > all the the scripts below would normally be run via an etl process, but we are just mocking it through direct sql calls.
 
-The first step is to prepare for the load by calling the procedure **dbo.sp_PrepareMainTablePartitiions**.
+The first step is to prepare for the load by calling the procedure **dbo.sp_PrepareMainTablePartitions**.
 
 > We will be running for 2019-01-02 and purging any data if it exists before.
 ```sql
-EXEC dbo.sp_PrepareMainTablePartitiions '2019-01-02',1
+EXEC dbo.sp_PrepareMainTablePartitions '2019-01-02',1
 ```
 
 Once this is completed. If you select from the **MetaData.vw_PartitionDetails** view again, you can see the new partition.
@@ -317,7 +317,7 @@ We can now see how this affects the partitions by selecting from the view **Meta
 ![3 New Rows](./3NewRows.png)
 
 ##### 7.4
-The data is now in the staging area.  If this was an actual batch run within an ETL process this would be an ideal time to implement some validation before move the data in the primary table.
+The data is now in the staging area.  If this was an actual batch run within an ETL process this would be an ideal time to implement some validation before we move the data in the primary table.
 
 To move to data in the main table we now call the procedure
 ```sql
@@ -332,12 +332,12 @@ We can now see how this affects the partitions by selecting from the view **Meta
 
 #### Step 8 - Removing data
 
-The stored procedure **dbo.sp_PrepareMainTablePartitiions** will perpare a new partition for data to be inserted, but it will also nuke data if it already existed.  Therefore this can be used to blast away a previous load.
+The stored procedure **dbo.sp_PrepareMainTablePartitions** will perpare a new partition for data to be inserted, but it will also nuke data if it already existed.  Therefore this can be used to blast away a previous load.
 
 Let's see
 
 ```sql
-EXEC dbo.sp_PrepareMainTablePartitiions '2019-01-02',1
+EXEC dbo.sp_PrepareMainTablePartitions '2019-01-02',1
 ```
 ![Rows Gone](./RowsGone.png)
 The data is gone again.  This was an immediate delete, similar to a truncate but only over the one partition.  The stored procedure has actually moved this table into the **Staging.MainTable__SwitchOUT** table.  Therefore the data can still be queried until the next run, or in theory it could be used before the next run.
@@ -357,7 +357,7 @@ BEGIN TRY DROP TABLE dbo.MainTable END TRY BEGIN CATCH END CATCH
 GO
 BEGIN TRY DROP VIEW MetaData.vw_PartitionDetails END TRY BEGIN CATCH END CATCH 
 GO
-BEGIN TRY DROP PROC dbo.sp_PrepareMainTablePartitiions END TRY BEGIN CATCH END CATCH 
+BEGIN TRY DROP PROC dbo.sp_PrepareMainTablePartitions END TRY BEGIN CATCH END CATCH 
 GO
 BEGIN TRY DROP PROC dbo.sp_LoadMainTable END TRY BEGIN CATCH END CATCH 
 GO
@@ -464,7 +464,7 @@ AS
 GO
 
 
-CREATE PROCEDURE dbo.sp_PrepareMainTablePartitiions
+CREATE PROCEDURE dbo.sp_PrepareMainTablePartitions
 (
       @PartitionDate DATE
     , @OverwriteData BIT = 1 -- 1 = Get rid of previous data.. 0 = Thrown error if previous data found
@@ -543,7 +543,7 @@ BEGIN
 
     IF @PartitionNumber IS NULL
     BEGIN
-        SET @ErrorMessage = 'Partition has not been created.  Run the proc "dbo.sp_PrepareMainTablePartitiions" first';
+        SET @ErrorMessage = 'Partition has not been created.  Run the proc "dbo.sp_PrepareMainTablePartitions" first';
         RAISERROR(@ErrorMessage,16,1);
         RETURN;
     END   
@@ -555,7 +555,7 @@ END
 GO
 
 
-EXEC dbo.sp_PrepareMainTablePartitiions '2019-01-02',1 ;
+EXEC dbo.sp_PrepareMainTablePartitions '2019-01-02',1 ;
 
 INSERT INTO dbo.MainTable
 (ID, UserName, RunDate)
