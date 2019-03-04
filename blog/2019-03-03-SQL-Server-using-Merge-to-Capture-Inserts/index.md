@@ -8,11 +8,11 @@ category: "SQL Server"
 
 On one occasion I encountered an _interesting_ piece of code.
 
-There was a user table and the only unique identifier was the identity field itself.  I would guess as the month and years progressed this table was enriched with addtitional columns until someone decided to call a halt on adding columns, but rather created a key value pair table to store additional attributes.
+There was a user table and the only unique identifier was the identity field itself.  I would guess as the month and years progressed this table was enriched with additional columns until someone decided to call a halt on adding columns, but rather created a key value pair table to store additional attributes.
 
 So this led to an interesting insert process.  Inserting a single row was fairly simple.  i.e. Insert row into main table, use the scope_identity to then insert additional details into the key value pair table.
 
-However, the process to insert in bulk made use of cursors and xml.  Each row was processed within a curosr row by row to allow the identity of the first insert to be used to join it the key value pair table.  I assume that this was done, because, if the data was inserted in bulk into the first table first, there would be know way to join back to it to identify the identities that had just been created, becuase there was no secondary unique identitfier.
+However, the process to insert in bulk made use of cursors and xml.  Each row was processed within a cursor row by row to allow the identity of the first insert to be used to join it the key value pair table.  I assume that this was done, because, if the data was inserted in bulk into the first table first, there would be no way to join back to it to identify the identities that had just been created, because there was no secondary unique identitfier.
 
 tl:dr
 
@@ -47,9 +47,9 @@ CREATE TABLE dbo.Users
     , FirstName VARCHAR(100)
 )
 ```
-The uniqie key is the ID.. So if we were to insert 'Fred' twice it would be impossible after the inserts are successful to capture which process created the entry. (I know it's bad table design :))
+The unique key is the ID.. So if we were to insert 'Fred' twice it would be impossible after the inserts are successful to capture which process created the entry. (I know it's bad table design :))
 
-##### 2. Palying with scope identities
+##### 2. Playing with scope identities
 
 ```sql
 INSERT INTO dbo.Users
@@ -64,14 +64,14 @@ print IDENT_CURRENT('dbo.Users')
 ```
 ![Identities](./Identities.png)
 
-As you can see, two were were inserted and the final output from the scope identities show the final ID as 2 and obvisuly disgard the first.
+As you can see, two rows were inserted and the final output from the scope identities show the final ID as 2 and obviously disregard the first.
 
 SQL server does also offer the _inserted_ table as reference via the _output_ clause.
 ![Output with Insert](./OutputWithInsert.png)
-But there is still no way that this can be tied back to the originating data. The source dataset cannot be referenced within the output cluase.
+But there is still no way that this can be tied back to the original data. The source dataset cannot be referenced within the output cluase.
 
 
->Role on the merge syntax
+>Roll on the merge syntax
 ##### Merge
 
 ```sql
