@@ -6,14 +6,14 @@ category: "Golang"
 
 > Golang and Databases - Part 1
 
-When I moved into the world of cloud, open source, big data etc. I quickly learned that a data engineer needs to someone who can do just more that write advanced SQL, procs, data admin and ETL. I need to have a `general` understanding of the back end code else well. My current position has exposed me to Golang (and python).
+When I moved into the world of cloud, open source, big data etc. I quickly learned that a data engineer needs to someone who can do just more that write advanced SQL, procs, data admin and ETL. I need to have a 'general' understanding of the back end code as well. My current position has exposed me to Golang (and python).
 
-Over the next few posts I will go into detail on how to interact with postgres and dynamo and create a simple CRUD (well maybe just CR) endpoint using a clean architecture in Go.
+Over the next few posts I will go into detail on how to interact with postgres and dynamo and create a simple CRUD (well maybe just CR) endpoint using clean architecture in Go.
 
 ###### Notes
 
 > - This blog is as much for my recollection as it is to help others
-> - Rather than installing local databases i will be using docker images
+> - Rather than installing local databases I will be using docker images
 > - If I have used examples/code from other sources, I'll give it a shout-out
 > - There are sites much better at it explaining it than me but the tools/IDEs etc. I will be using are:
 > - - OSX Terminal
@@ -29,7 +29,7 @@ Over the next few posts I will go into detail on how to interact with postgres a
 
 > **SHOUT OUT** - [hackernoon.com](https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198)
 
-To get golang talking to Postgres locally we'll need some sort of pg database running. The qickest and easiest way to do this is to pull down a docker image and run it.
+To get golang talking to Postgres locally, we'll need some sort of pg database running. The quickest and easiest way to do this is to pull down a docker image and run it.
 
 The following steps can accomplish this (in bash):
 
@@ -44,7 +44,7 @@ docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=postgres_docker -d -p 54
 
 > The bash above has started the db running on **localhost**, port **5432**, password **postgres_docker** and physically stored at **\$HOME/docker/volumes/postgres:/var/lib/postgresql/data**
 
-With that up and running you should now be able to connect to it using and DB IDE tool of your choosing. I'll just use PG admin in this case.
+With that up and running you should now be able to connect to it using any DB IDE tool of your choosing. I'll just use PG admin in this case.
 
 Lets create a doggo table
 
@@ -128,7 +128,7 @@ type Doggo struct {
 type Doggos []Doggo
 ```
 
-The first struct defines the 3 columns. The second creates an array of them
+The first struct defines the 3 columns. The second creates an array of them.
 
 ###### Main
 
@@ -161,8 +161,8 @@ I will not be raising errors/panics but just printing to the console. It will al
 ```
 
 - psqlInfo: Connection string using the environment variables.
-- sql.Open: Attempt to connect to the db using the connection string. Connection and error variables are stored. If there is an error is will be printed to the console.
-- dp.Ping: Attempt to ping the database. If there is an error is will be printed to the console
+- sql.Open: Attempt to connect to the db using the connection string. Connection and error variables are stored. If there is an error ii will be printed to the console.
+- dp.Ping: Attempt to ping the database. If there is an error ii will be printed to the console
 - defer: Keeps the connection open until the func using it has completed
 
 ###### Writing a row
@@ -215,7 +215,7 @@ rows, err := db.Query(`select "ID", "Name", "Breed" from demo.doggos`)
 - doggo: Sets up an empty holder for a row. Doggo Struct was created earlier.
 - doggoList: Sets up an empty holder for a collection of rows. Doggos Struct was created earlier.
 - for rows.Next() { : The code within that block will be run for each row. If there is an error it will be printed to the console
-- rows.Scan: row Columns ar mapped to the columns in the doggo variable. If there is an error it will be printed to the console
+- rows.Scan: row Columns are mapped to the columns in the doggo variable. If there is an error it will be printed to the console
 - doggoList = append: For each doggo collect it will be added to the list of doggos
 - fmt.Println(doggoList): The List of dogs will be written to the console
 
@@ -240,7 +240,7 @@ $ go run .
 [{1 Patch Lab}]
 ```
 
-The return is the one row the we inserted at the start being read out at the end.
+The data returned `[{1 Patch Lab}]` is the one row the we inserted at the start being read out at the end.
 
 ##### Entire code
 
