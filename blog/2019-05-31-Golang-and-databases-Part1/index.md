@@ -42,6 +42,8 @@ mkdir -p $HOME/docker/volumes/postgres
 docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=postgres_docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
 ```
 
+<br>
+
 > The bash above has started the db running on **localhost**, port **5432**, password **postgres_docker** and physically stored at **\$HOME/docker/volumes/postgres:/var/lib/postgresql/data**
 
 With that up and running you should now be able to connect to it using any DB IDE tool of your choosing. I'll just use PG admin in this case.
@@ -334,6 +336,8 @@ func main() {
 	fmt.Println(doggoList)
 }
 ```
+
+<br>
 
 #### Coming up next
 
