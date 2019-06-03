@@ -5,6 +5,7 @@
   "author": "LekoArts <hello@lekoarts.de>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
+    "firebase-tools": "^6.10.0",
     "gatsby": "^2.0.37",
     "gatsby-cli": "^2.6.4",
     "gatsby-plugin-catch-links": "^2.0.6",

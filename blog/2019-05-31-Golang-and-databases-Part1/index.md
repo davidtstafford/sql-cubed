@@ -224,10 +224,16 @@ rows, err := db.Query(`select "ID", "Name", "Breed" from demo.doggos`)
 Within terminal run the following command
 
 ```bash
+export pgHost=localhost
+export pgPort=5432
+export pgUser=postgres
+export pgPassword=postgres_docker
+export pgDbName=postgres
+
 go run .
 ```
 
-The output shuld look like this:
+The output should look like this:
 
 ```bash
 $ go run .
