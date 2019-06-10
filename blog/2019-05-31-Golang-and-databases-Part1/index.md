@@ -6,7 +6,7 @@ category: "Golang"
 
 > Golang and Databases - Part 1
 
-When I moved into the world of cloud, open source, big data etc. I quickly learned that a data engineer needs to someone who can do just more that write advanced SQL, procs, data admin and ETL. I need to have a 'general' understanding of the back end code as well. My current position has exposed me to Golang (and python).
+When I moved into the world of cloud, open source, big data etc. I quickly learned that a data engineer needs to be someone who can do just more than write advanced SQL, procs, data admin and ETL. I need to have a 'general' understanding of the back end code as well. My current position has exposed me to Golang (and python).
 
 Over the next few posts I will go into detail on how to interact with postgres and dynamo and create a simple CRUD (well maybe just CR) endpoint using clean architecture in Go.
 
