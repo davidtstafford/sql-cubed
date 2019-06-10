@@ -12,7 +12,7 @@ This is a continuation from [part1](./golang-and-databases-part-1).
 
 I will cover converting the previous code into a simple http endpoint that executes and returns the output.
 
-> The is not the final solution but a journey towards it and I will continue with each post
+> This is not the final solution but a journey towards it and I will continue with each post.
 
 ### Code changes
 
