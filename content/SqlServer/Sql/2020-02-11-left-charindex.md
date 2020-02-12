@@ -24,16 +24,16 @@ Here is some sample code to show how this would work:
 DECLARE @string VARCHAR(200);
 
 --Example 1 -- String with two pipes
-SET @string = 'ABC|DEF|GHI';
+SET @string = 'Top|Middle|Bottom*';
 SELECT LEFT(@string,CHARINDEX('|', @string + '|')-1)
 
---RETURNS : ABC
+--RETURNS : Top
 
 --Example 2-- String with no pipes
-SET @string = 'ABCDEFGHI';
+SET @string = 'TopMiddleBottom*';
 SELECT LEFT(@string,CHARINDEX('|', @string + '|')-1)
 
---RETURNS : ABCDEFGHI
+--RETURNS : TopMiddleBottom  -- As there are no pipes
 ```
 
 We are looking for the first occurrence of '|' and then use the left function to pull everything before that character.
