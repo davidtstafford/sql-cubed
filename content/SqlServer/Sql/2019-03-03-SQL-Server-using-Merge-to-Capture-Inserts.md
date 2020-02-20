@@ -69,12 +69,12 @@ print SCOPE_IDENTITY()
 print IDENT_CURRENT('dbo.Users')
 ```
 
-![Identities](/images/2019-03-03-SQL-Server-using-Merge-to-Capture-InsertsIdentities.png)
+![Identities](/images/2019-03-03-SQL-Server-using-Merge-to-Capture-Inserts/Identities.png)
 
 As you can see, two rows were inserted and the final output from the scope identities show the final ID as 2 and obviously disregard the first.
 
 SQL server does also offer the _inserted_ table as reference via the _output_ clause.
-![Output with Insert](./OutputWithInsert.png)
+![Output with Insert](/images/2019-03-03-SQL-Server-using-Merge-to-Capture-Inserts/OutputWithInsert.png)
 But there is still no way that this can be tied back to the original data. The source dataset cannot be referenced within the output clause.
 
 > Roll on the merge syntax
@@ -102,7 +102,7 @@ OUTPUT inserted.UserID, d.FirstName, d.WhichRow
 ;
 ```
 
-![Output using Merge](./OutputUsingMerge.png)
+![Output using Merge](/images/2019-03-03-SQL-Server-using-Merge-to-Capture-Inserts/OutputUsingMerge.png)
 
 So breaking this down
 

@@ -21,8 +21,8 @@ const config = {
     }
   },
   sidebar: {
-    forcedNavOrder: ["/SqlServer", "/Coding", "/Graph"], // eg ["/introduction", "/codeblock"]
-    collapsedNav: ["/SqlServer", "/Coding", "/Graph"], // eg ["/codeblock"],
+    forcedNavOrder: [], //["/SqlServer", "/Coding", "/Graph"], // eg ["/introduction", "/codeblock"]
+    collapsedNav: ["/SqlServer/Sql", "/Coding", "/Graph"], // eg ["/codeblock"],
     links: [
       {
         text: "LinkedIn",
