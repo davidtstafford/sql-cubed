@@ -1,84 +1,87 @@
 body {
-    font-family: Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .vh-40 {
-    height: 40vh;
+  height: 40vh;
 }
 
 .bg-1 {
-    background: #36b1da;
-    background: -moz-linear-gradient(left,  #36b1da 0%, #29c6cd 100%);
-    background: -webkit-linear-gradient(left,  #36b1da 0%,#29c6cd 100%);
-    background: linear-gradient(to right,  #36b1da 0%,#29c6cd 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#36b1da', endColorstr='#29c6cd',GradientType=1 );
+  background: #000cad;
+  background: -moz-linear-gradient(left, #000cad 0%, #454dad 100%);
+  background: -webkit-linear-gradient(left, #000cad 0%, #454dad 100%);
+  background: linear-gradient(to right, #000cad 0%, #454dad 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#36b1da', endColorstr='#29c6cd',GradientType=1 );
 }
 
 .pab-100px {
-    padding-bottom: 100px;
+  padding-bottom: 100px;
 }
 
 .w8 {
-    width: 64rem;
+  width: 64rem;
 }
 
 .tj {
-    text-align: justify;
+  text-align: justify;
 }
 
 .header-icon {
-    font-size: 30vh;
-    opacity: 0.4;
-    position: absolute;
-    bottom: -3rem;
-    right: 6rem;
+  font-size: 30vh;
+  opacity: 0.4;
+  position: absolute;
+  bottom: -3rem;
+  right: 6rem;
 }
 
 .border-color {
-    border-color: white;
+  border-color: white;
 }
 
 .hover-color {
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .hover-color:hover {
-    opacity: 0.9;
-    border-color: #29C6CD;
+  opacity: 0.9;
+  border-color: #29c6cd;
 }
 
 .content {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .content a {
-    text-decoration: none;
-    transition: color .15s ease-in;
-    color: #29C6CD;
+  text-decoration: none;
+  transition: color 0.15s ease-in;
+  color: #29c6cd;
 }
 
-.content a:hover   {
-    opacity: .5;
-    transition: all .15s ease-in;
+.content a:hover {
+  opacity: 0.5;
+  transition: all 0.15s ease-in;
 }
 
-.content code, .content pre, .content figure.highlight {
-    background-color: #f7f7f7;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 85%;
-    line-height: 1.45;
+.content code,
+.content pre,
+.content figure.highlight {
+  background-color: #f7f7f7;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 85%;
+  line-height: 1.45;
 }
 
 .content figure.highlight {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .content figure.highlight .gutter {
-    display: none;
+  display: none;
 }
 
 .content figure.highlight .code {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 /* Lamp */
@@ -91,11 +94,11 @@ body {
   top: -25vh;
   right: 0;
   opacity: 0.6;
-  transition: opacity .8s ease-in;
+  transition: opacity 0.8s ease-in;
 }
 
 .lamp:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .lamp .pa {
@@ -103,7 +106,7 @@ body {
 }
 
 .lamp .bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .lamp .foot {
