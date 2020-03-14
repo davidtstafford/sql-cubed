@@ -3,7 +3,7 @@ title: "Golang and Databases - Part 1"
 date: "2019-05-31"
 tags: [golang, db-services, coding]
 categories: 
-	- [Coding - golang]
+	- [Coding -> golang]
 ---
 
 When I moved into the world of cloud, open source, big data etc. I quickly learned that a data engineer needs to be someone who can do just more than write advanced SQL, procs, data admin and ETL. I need to have a 'general' understanding of the back end code as well. My current position has exposed me to Golang (and python).

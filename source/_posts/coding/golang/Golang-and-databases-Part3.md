@@ -3,7 +3,7 @@ title: "Golang and Databases - Part 3"
 date: "2019-06-08"
 tags: [golang, db-services, coding]
 categories: 
-	- [Coding - golang]
+	- [Coding -> golang]
 ---
 
 # Details

@@ -3,7 +3,7 @@ title: "Breadcrumb in SQL and Graph"
 date: "2018-12-17"
 tags: [graph, neo4j, sql]
 categories: 
-	- [Graph - Neo4j]
+	- [Graph -> Neo4j]
 ---
 
 In the past I have been involved in multiple projects that display a hierarchy of some sort. Whether that be an accounting book structure or a people reporting hierarchy.

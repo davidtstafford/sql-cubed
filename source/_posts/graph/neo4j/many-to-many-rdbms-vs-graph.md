@@ -3,7 +3,7 @@ title: "Many to Many (RDBMS to Graph)"
 date: "2018-11-05"
 tags: [graph, neo4j, sql]
 categories: 
-	- [Graph - Neo4j]
+	- [Graph -> Neo4j]
 ---
 
 One of the systems that I am currently working on is a migration from an Oracle DB to Graph. The ER diagram is similar to what can be seen in the original database.
