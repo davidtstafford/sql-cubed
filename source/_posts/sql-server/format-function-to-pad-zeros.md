@@ -3,6 +3,7 @@ title: "Padding Zeros using FORMAT"
 date: "2020-03-14"
 tags: [SQL]
 categories:
+  - [SQL Server]
   - [SQL Server -> Quick Reads]
 ---
 
