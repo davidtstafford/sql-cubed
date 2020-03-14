@@ -1,0 +1,49 @@
+# Logo
+logo_image_source: /assets/sql-cubed-logo.png
+
+# Index Page
+index_banner_text: SQL³
+index_banner_text_secondary:
+index_font_awesome_icon_css: fa fa-cubes
+
+# Header
+menu:
+  Home: /
+  #Archives: /archives
+  Tags: /tags
+  Categories: /categories
+  #About: /about.html
+  #Contact: /contact.html
+
+# Post
+default_post_title: Untitled
+default_post_icon: fa-folder-open
+
+# Archive Date Format
+archive_date_format: MMM YYYY
+archive_font_awesome_icon_css: fa-folder-open
+
+# About Widget
+about_widget_avatar_url: /assets/david-avatar.jpeg
+
+about_widget_text: "My name is David Stafford. <br>I am a Data engineer with way too many years of experience and tech to list ;)"
+
+# Comments.
+comments:
+  # Disqus comments
+  disqus_shortname:
+
+# Google Analytics Tracking ID
+google_analytics:
+
+# Social Media Platforms
+social_platforms:
+  - url: https://github.com/davidtstafford/
+    fa_icon: fa-github
+  - url: https://www.linkedin.com/in/davidterencestafford/
+    fa_icon: fa-linkedin
+  - url: https://twitter.com/davidtstafford
+    fa_icon: fa-twitter
+
+# Footer about
+footer_about: ""
