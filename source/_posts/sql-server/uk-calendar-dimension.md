@@ -278,7 +278,7 @@ BEGIN
                             , [Year]
                             , yyyymmdd
                           )
-            VALUES (
+            SELECT
                                 @RollingDate
                               , DATEPART(DAY,      @RollingDate)
                               , DATENAME(WEEKDAY,  @RollingDate)
@@ -292,7 +292,7 @@ BEGIN
                               , DATEPART(QUARTER,  @RollingDate)
                               , DATEPART(YEAR,     @RollingDate)
                               , CONVERT(CHAR(8),   @RollingDate, 112)
-                     );
+        ;
 
 		SET @RollingDate = DATEADD(DAY,1,@RollingDate);
 		SET @counter += 1;

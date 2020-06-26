@@ -13,9 +13,9 @@ This can be accomplished using the FORMAT function
 
 ```sql
 DECLARE @period INT = 1;
-SELECT FORMAT(@period, 00);  --Returns 01
+SELECT FORMAT(@period, '00');  --Returns 01
 GO
 DECLARE @period INT = 10;
-SELECT FORMAT(@period, 00);  --Returns 10
+SELECT FORMAT(@period, '00');  --Returns 10
 GO
 ```
